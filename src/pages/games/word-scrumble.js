@@ -82,22 +82,53 @@ const WordScramble = () => {
   };
 
   // Submit word and load the next one
-  const submitWord = () => {
-    const enteredWord = userInput.join('');
-    if (enteredWord === currentWord) {
-      setScore((prev) => prev + 10); // Add 10 points for correct answer
-    } else {
-      setScore((prev) => Math.max(0, prev - 5)); // Deduct 5 points for wrong answer
-    }
-
-    const nextIndex = currentIndex + 1;
-    if (nextIndex < wordList.length) {
-      setCurrentIndex(nextIndex);
-      loadNewWord(wordList[nextIndex]);
-    } else {
-      setGameOver(true);
+  const submitWord = async () => {
+    const enteredWord = userInput.join('').toLowerCase(); // Convert to lowercase
+    const currentWordObj = wordList[currentIndex];
+  
+    try {
+      // Construct the correct API path
+      const apiUrl = `https://q8nn4dzd1h.execute-api.ap-southeast-1.amazonaws.com/dev/hackathon-apis/submit/lead/${currentWordObj.booking_id}/word/${currentWordObj.word_id}`;
+  
+      console.log('Submitting answer to URL:', apiUrl);
+  
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ answer: enteredWord }), // Ensure answer is lowercase
+      });
+  
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('API Error:', response.status, errorText);
+        alert(`Failed to submit answer: ${errorText}`);
+        return;
+      }
+  
+      const data = await response.json();
+      console.log('API Response:', data);
+  
+      // Update the score from the response
+      if (data && typeof data.score === 'number') {
+        setScore(data.score);
+      } else {
+        console.warn('Unexpected response format:', data);
+      }
+  
+      // Load the next word or end the game
+      const nextIndex = currentIndex + 1;
+      if (nextIndex < wordList.length) {
+        setCurrentIndex(nextIndex);
+        loadNewWord(wordList[nextIndex]);
+      } else {
+        setGameOver(true);
+      }
+    } catch (error) {
+      console.error('Error submitting answer:', error);
+      alert('Failed to submit answer. Please try again.');
     }
   };
+  
 
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
@@ -132,12 +163,6 @@ const WordScramble = () => {
             <h2 className="mt-3">Your Score</h2>
             <p className="display-4 text-info">{score}</p>
           </div>
-          <button
-            className="btn btn-primary"
-            onClick={() => window.location.reload()}
-          >
-            Play Again
-          </button>
         </div>
       </div>
     );
