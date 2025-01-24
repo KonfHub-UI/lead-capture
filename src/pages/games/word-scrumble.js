@@ -120,10 +120,10 @@ const WordScramble = () => {
   }
 
   return (
-    <div className="min-vh-100 d-flex align-items-center justify-content-center">
+    <div className="min-vh-100 d-flex flex-column align-items-center justify-content-center">
+      <h1 className="mb-5 text-white">Word Scramble</h1>
       <div className="text-center">
-        <h1 className="mb-4 text-white">Word Scramble</h1>
-        <div className="mb-2 d-flex justify-content-between align-items-center">
+        <div className="mb-2 mt-5 d-flex justify-content-between align-items-center">
           <span className="badge text-content"><CiTrophy size={24} /> Score: {score}</span>
           <span className="badge text-content"><MdOutlineTimer size={24} /> {formatTime(timer)}</span>
         </div>
