@@ -120,7 +120,7 @@ const WordScramble = () => {
   }
 
   return (
-    <div className="bg-dark min-vh-100 d-flex align-items-center justify-content-center">
+    <div className="min-vh-100 d-flex align-items-center justify-content-center">
       <div className="text-center">
         <h1 className="mb-4 text-white">Word Scramble</h1>
         <div className="mb-2 d-flex justify-content-between align-items-center">
@@ -128,7 +128,7 @@ const WordScramble = () => {
           <span className="badge text-content"><MdOutlineTimer size={24} /> {formatTime(timer)}</span>
         </div>
 
-        <div className="text-white p-4 mb-4 word-box">
+        <div className="d-flex flex-column justify-content-center text-white p-4 mb-4 word-box">
           <h2 className="scrambled-word mb-4">{scrambledWord}</h2>
 
           <div className="d-flex justify-content-center gap-2 flex-wrap">
@@ -137,7 +137,7 @@ const WordScramble = () => {
                 key={index}
                 type="text"
                 maxLength="1"
-                className="form-control letter-input bg-dark text-center text-white"
+                className="form-control letter-input text-center text-gray-900"
                 ref={(el) => (inputRefs.current[index] = el)} // Assign input refs
                 value={userInput[index] || ''} // Default to empty string
                 onChange={(e) => handleInputChange(index, e.target.value)}
