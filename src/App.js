@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Router, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import SignIn from "./pages/singIn";
-import Games from "./pages/games";
+import Games from "./pages/games/games";
 import WordScramble from "./pages/word-scrumble";
 
 
