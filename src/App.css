@@ -37,7 +37,6 @@ html, body {
   height: 100%;
   margin: 0;
   background-image: url("./images/background.jpg");
-  background-image: url("./images/backgroundImg.jpg");
   background-size: cover;
   font-family: var(--fontFamily)!important;
   color: var(--textColor)!important;
