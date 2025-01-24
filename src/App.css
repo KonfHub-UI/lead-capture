@@ -32,6 +32,7 @@
     transform: rotate(360deg);
   }
 }
+
 html, body {
   height: 100%;
   margin: 0;
@@ -39,4 +40,52 @@ html, body {
   background-size: cover;
   font-family: var(--fontFamily)!important;
   color: var(--textColor)!important;
+
 }
+
+.text-content{
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  padding: 0px !important;
+}
+.word-box{
+  width: 890px;
+  border-radius: 4px;
+  padding: 10px;
+  border: 0.5px solid rgba(255, 255, 255, 1) 
+}
+.next-button{
+  width: 300px !important;
+  height: 50px !important;
+  border-radius: 8px;
+  border: 0.5px solid rgba(255, 255, 255, 1);
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+
+}
+.letter-input {
+  width: 45px !important;
+  height: 45px;
+  text-align: center;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.scrambled-word {
+  font-size: 2rem;
+  letter-spacing: 5px;
+}
+
+@media (max-width: 576px) {
+  .letter-input {
+    width: 35px !important;
+    height: 35px;
+    font-size: 1rem;
+  }
+
+  .scrambled-word {
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+  }
