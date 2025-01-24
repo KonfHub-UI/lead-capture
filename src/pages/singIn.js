@@ -109,11 +109,11 @@ const SignIn = () =>{
     return(
         <div className="page-bg mt-5">
             <div className="d-flex justify-content-center flex-row flex-column text-center">
-                <h1 className="heading">Lets have fun!</h1>
+                <h1 className="main-heading mt-5">Lets have fun!</h1>
                 <p>Scan your QR code or fill the forms to get started!</p>
             </div>
-            <div className="d-flex">
-                <div className="scan-border">
+            <div className="d-flex justify-content-center">
+                <div className="">
                 <ScanContainer
                 handleClickAdvanced={handleClickAdvanced}
                 display={display}
@@ -128,8 +128,8 @@ const SignIn = () =>{
                 </BorderedButton>
             </div> */}
                 </div>
-                <div className="d-flex align-items-center mx-4">OR</div>
-                <div></div>
+                {/* <div className="d-flex align-items-center mx-4">OR</div>
+                <div></div> */}
             </div>
         </div>
     )
