@@ -1,4 +1,4 @@
-import "./games/games.css";
+import "./games.css";
 
 const Games = () => {
   return (
