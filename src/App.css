@@ -1,3 +1,10 @@
+:root {
+	--primaryColor: #463BE1;
+	--secondaryColor: #000000;
+  --fontFamily: "Figtree";
+  --textColor: white;
+}
+
 .App {
   text-align: center;
 }
@@ -13,17 +20,6 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 .App-link {
   color: #61dafb;
 }
@@ -35,4 +31,12 @@
   to {
     transform: rotate(360deg);
   }
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  background-image: linear-gradient(to right, var(--secondaryColor), var(--primaryColor));
+  background-size: cover;
+  font-family: var(--fontFamily)!important;
+  color: var(--textColor)!important;
 }
