@@ -76,55 +76,7 @@ const SignIn = () =>{
 		setDisplayQrScanner(true);
 
 		const decodedEntry = decodeTextFormatter(decodeText[0]);
-		fetchLeadDetails();
-			// const findAttendeeFromIndexDB = await attendees.get(decodedEntry.id);
-			// setAttendeeScanDetails(findAttendeeFromIndexDB);
-				// if (decodedEntry["id"].includes(",")) {
-				// 	let SingleBuyerAttendeeIdArr = [...decodedEntry["id"].split(",")];
-				// 	var encodedBookingId = encodeURIComponent(decodedEntry["id"]);
-				// 	let SingleBuyerAttendeeDetailsArr = [];
-				// 	let checkInAttendeeDetails = [];
-				// 	await Promise.all(
-				// 		SingleBuyerAttendeeIdArr.map(async (individualAttendee, index) => {
-				// 			const findAttendeeFromIndexDB = await attendees.get(individualAttendee);
-				// 			SingleBuyerAttendeeDetailsArr.push(findAttendeeFromIndexDB);
-				// 			if (findAttendeeFromIndexDB.checkInStatus == "true") {
-				// 				checkInAttendeeDetails.push(findAttendeeFromIndexDB);
-				// 			}
-				// 			if (findAttendeeFromIndexDB.customForms) {
-				// 				showListOfForms(findAttendeeFromIndexDB.customForms);
-				// 			}
-				// 			if (SingleBuyerAttendeeIdArr.length === index + 1) {
-				// 				setCheckInBoxToggleArr(SingleBuyerAttendeeDetailsArr);
-				// 			}
-				// 		})
-				// 	);
-				// 	navigate({
-				// 		pathname: `/Events/${event_id}/scanDetails/singleBuyer`,
-				// 		search: `?bookingId=${encodedBookingId}&accessCode=${accessCode}`
-				// 	});
-				// } else if (findAttendeeFromIndexDB) {
-				// 	navigate({
-				// 		pathname: `/Events/${event_id}/scanDetails/scanModal`,
-				// 		search: `?bookingId=${findAttendeeFromIndexDB.bookingId}`
-				// 	});
-				// 	findDuplicate(decodedEntry["id"]);
-				// 	setSingleAttendee(findAttendeeFromIndexDB);
-				// 	if (findAttendeeFromIndexDB.customForms) {
-				// 		showListOfForms(findAttendeeFromIndexDB.customForms);
-				// 	}
-				// } else if (decodedEntry?.["eid"] === event_id && !findAttendeeFromIndexDB) {
-				// 	setBookingIdForSyncNow(decodedEntry.id);
-				// 	if (!networkStatus) {
-				// 		setNewAttendeeNoNetworkModal(true);
-				// 		setNewAttendeeModal(true);
-				// 	} else {
-				// 		setNewAttendeeNoNetworkModal(false);
-				// 		SyncDetailsClickHandler(decodedEntry.id);
-				// 	}
-				// 	setLoadingNewData(false);
-				// }
-			
+		fetchLeadDetails(decodedEntry.id);
 	};
 
     const scanAttendee = () => {
