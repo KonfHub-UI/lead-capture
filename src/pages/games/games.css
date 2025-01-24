@@ -18,6 +18,14 @@
   color: #fff;
 }
 
+.main-heading{
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 48px;
+  text-align: center;
+  color: #fff;
+}
+
 /* Subheading styles */
 .subheading {
   margin-top: 15px;
