@@ -1,6 +1,7 @@
 import ScanContainer from "../components/scanner/scanner";
 import { useState, useEffect, useRef, useCallback } from "react";
 import {Button, BorderedButton} from "./../components/buttons/Buttons";
+import { useNavigate, Outlet } from "react-router-dom";
 
 const SignIn = () =>{
 	const [display, setDisplay] = useState(false);
@@ -10,6 +11,8 @@ const SignIn = () =>{
 	const [loading, setLoading] = useState(false);
 	const [displayQrScanner, setDisplayQrScanner] = useState(false);
     
+	const navigate = useNavigate();
+
     const handleClickAdvanced = () => {
 		setDisplay(false);
 		setDisplayQrScanner(true);
@@ -44,13 +47,36 @@ const SignIn = () =>{
 		setIsScanningPaused(() => true);
 	};
 
+	const fetchLeadDetails = async (bookingId) => {
+		try {
+		  const response = await fetch(
+			`https://q8nn4dzd1h.execute-api.ap-southeast-1.amazonaws.com/dev/hackathon-apis/scan/${bookingId}`
+		  ,{
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			  },
+		  });
+		  const data = await response.json();
+		  if (data) {
+			navigate({
+				pathname: `/games`,
+			});
+		  } else {
+			alert('Please scan proper QR Code');
+		  }
+		} catch (error) {
+		  console.error('Error fetching words:', error);
+		}
+	  };
+
     const onScanQRCode = async decodeText => {
 		setDisplay(false);
 		handleStop();
 		setDisplayQrScanner(true);
 
 		const decodedEntry = decodeTextFormatter(decodeText[0]);
-		
+		fetchLeadDetails();
 			// const findAttendeeFromIndexDB = await attendees.get(decodedEntry.id);
 			// setAttendeeScanDetails(findAttendeeFromIndexDB);
 				// if (decodedEntry["id"].includes(",")) {
